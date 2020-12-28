@@ -1,0 +1,6 @@
+[run]
+include = apeiro_agency/*
+omit = *migrations*, *tests*
+disable_warnings = already-imported
+plugins =
+    django_coverage_plugin
