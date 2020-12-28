@@ -6,6 +6,7 @@ from django.views.generic import (
     RedirectView,
     UpdateView,
 )
+from django.conf import settings
 
 User = get_user_model()
 
