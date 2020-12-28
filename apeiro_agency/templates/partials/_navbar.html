@@ -1,0 +1,95 @@
+{% load static %}
+
+<!-- header part start -->
+<nav class="navbar navbar-expand-lg main_menu">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+                <i class=" fas fa-bars"></i>
+            </span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto navbar-left">
+                <li class="nav-item active">
+                    <a class="nav-link active" href="{% url 'core:home' %}">
+                        Home <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#identity_full">Our Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#work_full">Protfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about_us">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact_full">Contact</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right align-items-center">
+                <li>
+                    <div class="contact">
+                        <i class="fas fa-phone-alt"></i>
+                        <p>123-456-789</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>cart</p>
+                    </div>
+                </li>
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item dropdown account-dropdown">
+                        <a class="nav-link dropdown-toggle account" href="#" 
+                            id="accountDropdown" role="button" data-toggle="dropdown" 
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="far fa-user-circle fa-2x"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="accountDropdown">
+                            <a class="dropdown-item" 
+                                href="{% url 'users:detail' request.user.username  %}">
+                                My Account
+                            </a>
+                            <a class="dropdown-item" href="#">My Orders</a>
+                        <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" 
+                                href="{% url 'account_logout' %}">
+                                Logout
+                            </a>
+                        </div>
+                    </li>
+                    {% comment %}
+                    {% else %}
+                        <li class="nav-item">
+                            {# URL provided by django-allauth/account/urls.py #}
+                            <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
+                        </li>
+                        <li class="nav-item">
+                            {# URL provided by django-allauth/account/urls.py #}
+                            <a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
+                        </li> 
+                    {% endcomment %}
+                {% endif %}
+                <li>
+                    <a href="#"><i class="fab fa-facebook-f s_icon"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fab fa-twitter s_icon"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fab fa-instagram s_icon"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fab fa-pinterest-p s_icon"></i></i></a>
+                </li>
+            </ul>
+        </div>
+        <a class="navbar-brand" href="{% url 'core:home' %}">
+            <img src="{% static 'images/logo-2-768x296.png' %}" class="w-100" alt="logo">
+        </a>
+    </div>
+</nav>
+<!-- header part end -->

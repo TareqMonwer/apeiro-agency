@@ -1,0 +1,573 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- banner part start -->
+    <section id="banner_full">
+        <div class="banner_item" 
+            style="background: url({% static 'images/pexels-fauxels-3184465.jpg' %});">
+            <div class="container p-lg-0">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <div class="banner_text">
+                            <h1>The New Way To DesignYour Marketing Campaing</h1>
+                            <p>Get your design done only based on your needs</p>
+                            <a href="#">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="banner_item" style="background: url({% static 'images/pexels-fauxels-3228711.jpg' %});">
+            <div class="container p-lg-0">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <div class="banner_text">
+                            <h1>The New Way To DesignYour Marketing Campaing</h1>
+                            <p>Get your design done only based on your needs</p>
+                            <a href="#">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="banner_item" style="background: url({% static 'images/pexels-fauxels-3184665.jpg' %});">
+            <div class="container p-lg-0">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <div class="banner_text">
+                            <h1>The New Way To DesignYour Marketing Campaing</h1>
+                            <p>Get your design done only based on your needs</p>
+                            <a href="#">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- banner part end -->
+
+    <!-- what we do part start -->
+    <section id="about_full">
+        <div class="container p-lg-0">
+            <div class="row text-center">
+                <div class="col-lg-12">
+                    <div class="about_head">
+                        <h2>What we Do</h2>
+                        <p>We create experiences that transfrom brands, grow business<br>and make people’s lives better</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 text-center">
+                    <div class="ab_details">
+                        <a href="#"><i class="fab fa-searchengin"></i></a>
+                        <p>Research</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 text-center">
+                    <div class="ab_details">
+                        <a href="#"><i class="fas fa-chess-knight"></i></a>
+                        <p>Strategy</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 text-center">
+                    <div class="ab_details">
+                        <a href="#"><i class="fas fa-drafting-compass"></i></a>
+                        <p>Design</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 text-center">
+                    <div class="ab_details">
+                        <a href="#"><i class="fas fa-microchip"></i></a>
+                        <p>Technology</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- what we do part end -->
+
+    <!-- Your identity part start -->
+    <section id="identity_full">
+        <div class="container p-lg-0">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="identity_head">
+                        <h2>Your Identity</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="catagoys_btn">
+                        <ul class="nav nav-pills mb-3 cl_menu" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#branding_data" role="tab" aria-controls="pills-home" aria-selected="true">
+                                    <img src="{% static 'images/wbranding.png' %}" alt="">
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#advertisment_data" role="tab" aria-controls="pills-profile" aria-selected="false">
+                                    <img src="{% static 'images/waccount.png' %}" alt="">
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#camping_data" role="tab" aria-controls="pills-contact" aria-selected="false">
+                                    <img src="{% static 'images/wvideo.png' %}" alt="">
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#social_media_data" role="tab" aria-controls="pills-contact" aria-selected="false">
+                                    <img src="{% static 'images/wanalytics.png' %}" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="maroff">View More Catagory</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="catagoys_item">
+                        <div class="tab-content cl_rout" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="branding_data" 
+                                role="tabpanel" aria-labelledby="pills-home-tab">
+                                <ul>
+                                    <li>
+                                        <div class="item_box">
+                                            <a href="#">
+                                                <img src="{% static 'images/branding.png' %}" alt="">
+                                                <h5>REBRANDING <br> IDENTITY DESIGN</h5>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="item_box">
+                                                <img src="{% static 'images/account.png' %}" alt="">
+                                                <h5>LOGO DESIGN</h5>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="item_box">
+                                                <img src="{% static 'images/video.png' %}" alt="">
+                                                <h5>CORPORATE DESIGN</h5>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="item_box">
+                                                <img src="{% static 'images/branding.png' %}" alt="">
+                                                <h5>REAL ESTATE <br> BRANDING</h5>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="item_box">
+                                                <img src="{% static 'images/account.png' %}" alt="">
+                                                <h5>LOGO DESIGN</h5>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="item_box">
+                                                <img src="{% static 'images/video.png' %}" alt="">
+                                                <h5>CORPORATE DESIGN</h5>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="catagory_banner">
+                                    <div class="catagory_banner_text">
+                                        <h4>Branding</h4>
+                                        <p>From integrated advertising campaigns to service design, we approach our projects with strategic and creative</p>
+                                    </div>
+                                    <div class="catagory_banner_icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="advertisment_data" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                <ul>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Branding</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Branding</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Branding</h5>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="catagory_banner">
+                                    <div class="catagory_banner_text">
+                                        <h4>Social Media Management</h4>
+                                        <p>From integrated advertising campaigns to service design, we approach our projects with strategic and creative</p>
+                                    </div>
+                                    <div class="catagory_banner_icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="camping_data" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                <ul>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Logo Animation</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>GIF Animation</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Explainer Video</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Lyrics Animation</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Book Trailer Animation</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Product Animation</h5>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="catagory_banner">
+                                    <div class="catagory_banner_text">
+                                        <h4>Animation</h4>
+                                        <p>From integrated advertising campaigns to service design, we approach our projects with strategic and creative</p>
+                                    </div>
+                                    <div class="catagory_banner_icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="social_media_data" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                <ul>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Branding</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Branding</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Branding</h5>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="catagory_banner">
+                                    <div class="catagory_banner_text">
+                                        <h4>Advertisement Management</h4>
+                                        <p>From integrated advertising campaigns to service design, we approach our projects with strategic and creative</p>
+                                    </div>
+                                    <div class="catagory_banner_icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Your identity part end -->
+
+    <!-- way to manage part start -->
+    <section id="waymanage_full">
+        <div class="container p-lg-0">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="identity_head">
+                        <h2>Your Ways To Manage</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="catagoys_btn">
+                        <ul class="nav nav-pills mb-3 cl_menu" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#branding_data" role="tab" aria-controls="pills-home" aria-selected="true">
+                                    <img src="{% static 'images/wbranding.png' %}" alt="">
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#advertisment_data" role="tab" aria-controls="pills-profile" aria-selected="false">
+                                    <img src="{% static 'images/waccount.png' %}" alt="">
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#camping_data" role="tab" aria-controls="pills-contact" aria-selected="false">
+                                    <img src="{% static 'images/wvideo.png' %}" alt="">
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#social_media_data" role="tab" aria-controls="pills-contact" aria-selected="false">
+                                    <img src="{% static 'images/wanalytics.png' %}" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="maroff">View More Catagory</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="catagoys_item">
+                        <div class="tab-content cl_rout" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="branding_data" role="tabpanel" aria-labelledby="pills-home-tab">
+                                <ul>
+                                    <li>
+                                        <div class="item_box">
+                                            <a href="#">
+                                                <img src="{% static 'images/branding.png' %}" alt="">
+                                                <h5>REBRANDING <br> IDENTITY DESIGN</h5>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="item_box">
+                                                <img src="{% static 'images/account.png' %}" alt="">
+                                                <h5>LOGO DESIGN</h5>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="item_box">
+                                                <img src="{% static 'images/video.png' %}" alt="">
+                                                <h5>CORPORATE DESIGN</h5>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="item_box">
+                                                <img src="{% static 'images/branding.png' %}" alt="">
+                                                <h5>REAL ESTATE <br> BRANDING</h5>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="item_box">
+                                                <img src="{% static 'images/account.png' %}" alt="">
+                                                <h5>LOGO DESIGN</h5>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="item_box">
+                                                <img src="{% static 'images/video.png' %}" alt="">
+                                                <h5>CORPORATE DESIGN</h5>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="catagory_banner">
+                                    <div class="catagory_banner_text">
+                                        <h4>Branding</h4>
+                                        <p>From integrated advertising campaigns to service design, we approach our projects with strategic and creative</p>
+                                    </div>
+                                    <div class="catagory_banner_icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="advertisment_data" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                <ul>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Branding</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Branding</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Branding</h5>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="catagory_banner">
+                                    <div class="catagory_banner_text">
+                                        <h4>Social Media Management</h4>
+                                        <p>From integrated advertising campaigns to service design, we approach our projects with strategic and creative</p>
+                                    </div>
+                                    <div class="catagory_banner_icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="camping_data" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                <ul>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Logo Animation</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>GIF Animation</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Explainer Video</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Lyrics Animation</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Book Trailer Animation</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Product Animation</h5>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="catagory_banner">
+                                    <div class="catagory_banner_text">
+                                        <h4>Animation</h4>
+                                        <p>From integrated advertising campaigns to service design, we approach our projects with strategic and creative</p>
+                                    </div>
+                                    <div class="catagory_banner_icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="social_media_data" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                <ul>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Branding</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Branding</h5>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item_box">
+                                            <i></i>
+                                            <h5>Branding</h5>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="catagory_banner">
+                                    <div class="catagory_banner_text">
+                                        <h4>Advertisement Management</h4>
+                                        <p>From integrated advertising campaigns to service design, we approach our projects with strategic and creative</p>
+                                    </div>
+                                    <div class="catagory_banner_icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- way to manage part end -->
+
+    <!-- newslatter part start -->
+    <section id="newslatter_full">
+        <div class="container p-lg-0">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="newaslatter_text">
+                        <h4>Join Our Newsletter</h4>
+                        <p>Enter your email and be the first to know about special offers, new arrivals and events!</p>
+                        <form>
+                            <input type="emnail" name="your-email" aria-required="true" placeholder="Enter Your Email">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- news latter part end -->
+
+    <!-- review part start -->
+    <section id="review_full">
+        <div class="container p-lg-0">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="review_inner">
+                        <img src="{% static 'images/asset1.png' %}" alt="">
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <h6>Sandy Cooper</h6>
+                        <img src="{% static 'images/Ellipse 6.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- review part end -->
+
+    <!-- Footer -->
+    {% include 'partials/_footer.html' %}
+
+{% endblock content %}
