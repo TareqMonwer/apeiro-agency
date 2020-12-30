@@ -46,8 +46,13 @@ class FeatureItem(TimeStampedModel):
 
 class ServiceCategory(TimeStampedModel):
     name = models.CharField(max_length=100, unique=True)
+    category_icon = models.ImageField(
+        upload_to='category_icons/',
+        default='category_icons/default.png'
+    )
     slug = models.SlugField(blank=True, null=True, unique=True)
     description = models.TextField(blank=True, null=True)
+    is_featured = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['name', '-created']
@@ -66,11 +71,20 @@ class ServiceCategory(TimeStampedModel):
 
 class Service(TimeStampedModel):
     name = models.CharField(max_length=100, unique=True)
+    icon = models.ImageField(
+        upload_to='service_icons/',
+        default='service_icons/default.png'
+    )
     slug = models.SlugField(blank=True, null=True, unique=True)
     description = models.TextField(blank=True, null=True)
     features = models.ManyToManyField(FeatureItem)
     pricing = models.ForeignKey(
         PricingPlan,
+        on_delete=models.CASCADE,
+        related_name='services'
+    )
+    category = models.ForeignKey(
+        ServiceCategory,
         on_delete=models.CASCADE,
         related_name='services'
     )
