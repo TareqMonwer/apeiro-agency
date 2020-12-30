@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+    <div class="container p-lg-0 mb-5">
+        <div class="page-header bg-primary">
+            <div class="page-header--content d-flex justify-content-between align-items-center">
+                <div class="page-header--title">
+                    <h4 class="text-light">Categories</h4>
+                </div>
+                <div class="page-header--breadcrumb">
+                    <ul class="breadcrumb p-0 m-0 bg-transparent">
+                        <li class="breadcrumb-item">
+                            <a class="text-light" href="">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a class="text-light" href="">Categories</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="listing-actions">
+                    <div class="listing-actions--wrapper d-flex justify-content-between align-items-center">
+                        <div class="listing-actions--left">
+                            <a href="" class="text-dark listing-action-active">
+                                <i class="fas fa-th-list"></i>
+                            </a>
+                            <a href="" class="text-dark">
+                                <i class="fas fa-th"></i>
+                            </a>
+                        </div>
+                        <div class="listing-actions--right">
+                            <form action="">
+                                <select name="" id="">
+                                    <option value="" selected>select an option</option>
+                                    <option value="">Option 1</option>
+                                    <option value="">Option 1</option>
+                                    <option value="">Option 1</option>
+                                    <option value="">Option 1</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+    </div>
+{% endblock content %}
