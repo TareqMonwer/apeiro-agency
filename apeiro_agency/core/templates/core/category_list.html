@@ -63,13 +63,16 @@
                         <div class="col-lg-4 mb-4">
                             <div class="category-card">
                                 <div class="category-card-img">
-                                    <img src="{{ category.category_icon.url }}" alt="">
+                                    <img src="{{ category.image.url }}" alt="">
                                 </div>
                                 <div class="category-card-metadata text-center py-2">
                                     <p>{{ category.name }}</p>
                                     <span class="text-muted">$2500</span>
                                 </div>
                                 <div class="category-card--actions">
+                                    <button data-category-id="{{ category.id }}"
+                                        class="btn btn-success mb-2 add-to-cart">Add to cart
+                                    </button>
                                     <a href="" class="btn btn-warning">Details</a>
                                 </div>
                             </div>
@@ -179,7 +182,7 @@
                         </div>
                         <div class="sidebar-cart">
                             <div class="sidebar-cart--cart-items">
-                                <div class="sidebarcart-item py-3 d-flex justify-content-between align-items-center border-bottom">
+                                <!-- <div class="sidebarcart-item py-3 d-flex align-items-center border-bottom">
                                     <div id="rm-item1" class="pointer cart-item-remover">
                                         <i class="fas fa-times"></i>
                                     </div>
@@ -195,7 +198,8 @@
                                     </div>
                                 </div>
 
-                                <div class="sidebarcart-item py-3 d-flex justify-content-between align-items-center border-bottom">
+                                <div class="sidebarcart-item py-3 d-flex 
+                                    align-items-center border-bottom">
                                     <div id="rm-item1" class="pointer cart-item-remover">
                                         <i class="fas fa-times"></i>
                                     </div>
@@ -211,7 +215,7 @@
                                     </div>
                                 </div>
 
-                                <div class="sidebarcart-item py-3 d-flex justify-content-between align-items-center border-bottom">
+                                <div class="sidebarcart-item py-3 d-flex  align-items-center border-bottom">
                                     <div id="rm-item1" class="pointer cart-item-remover">
                                         <i class="fas fa-times"></i>
                                     </div>
@@ -225,20 +229,19 @@
                                             2 x $400
                                         </span>
                                     </div>
+                                </div> -->
+                            </div>
+                            <div class="sidebar-cart--cart-metadata">
+                                <div class="sidebar-cart--subtotal py-3 small">
+                                    <p>Subtotal: $800</p>
                                 </div>
-
-                                <div class="sidebar-cart--cart-metadata">
-                                    <div class="sidebar-cart--subtotal py-3 small">
-                                        <p>Subtotal: $800</p>
-                                    </div>
-                                    <div class="sidebar-cart--actions">
-                                        <a href="" class="btn btn-sm btn-warning">
-                                            View Cart
-                                        </a>
-                                        <a href="" class="btn btn-sm btn-success">
-                                            Checkout
-                                        </a>
-                                    </div>
+                                <div class="sidebar-cart--actions">
+                                    <a href="" class="btn btn-sm btn-warning">
+                                        View Cart
+                                    </a>
+                                    <a href="" class="btn btn-sm btn-success">
+                                        Checkout
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -259,10 +262,47 @@
     <script>
         const listingActionBtns = document.querySelectorAll('.listing-action');
         let activeListingBtn = document.querySelector('.listing-action-active')
-        const cartItemRmBtns = document.querySelectorAll('.cart-item-remover');
+        var cartItemRmBtns = document.querySelectorAll('.cart-item-remover');
+        const addToCartBtns = document.querySelectorAll('.add-to-cart');
+        const sidebarCartItemsContainer = document.querySelector('.sidebar-cart--cart-items');
 
         function rmCartItem(){
-            this.parentNode.remove();
+            const elem = event.target.parentNode.parentNode;
+            elem.remove();
+        }
+
+        function addToCart() {
+            categoryId = this.dataset.categoryId;
+            const url = `/api/core/category/${categoryId}`;
+            fetch(url, {
+                method: 'GET',
+            }).then(function(response){
+                return response.json();
+            }).then(function(data){
+                const newCartItem = `
+                <div class="sidebarcart-item py-3 d-flex
+                    align-items-center border-bottom">
+                    <div id="rm-item-${data.id}" class="pointer cart-item-remover mr-3"
+                        onclick="rmCartItem()">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="sidebarcart-item--img mr-3">
+                        <img src="${data.image}" alt=""
+                            width="65" height="65">
+                    </div>
+                    <div class="sidebarcart-item--info">
+                        <p>${ data.name }</p>
+                        <span class="text-muted">
+                            2 x $400
+                        </span>
+                    </div>
+                </div>
+                `;
+                sidebarCartItemsContainer.insertAdjacentHTML('beforeend', newCartItem);
+                cartItemRmBtns = document.querySelectorAll('.cart-item-remover');
+            }).then(function(err){
+                console.log(err, 'FAILEDDDDDD');
+            })
         }
 
         listingActionBtns.forEach(function(actionItem){
@@ -274,8 +314,8 @@
             });
         });
 
-        cartItemRmBtns.forEach(function (item) {
-            item.addEventListener('click', rmCartItem);
+        addToCartBtns.forEach(function(category){
+            category.addEventListener('click', addToCart)
         });
     </script>
 {% endblock javascript %}

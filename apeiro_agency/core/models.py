@@ -50,6 +50,10 @@ class ServiceCategory(TimeStampedModel):
         upload_to='category_icons/',
         default='category_icons/default.png'
     )
+    image = models.ImageField(
+        upload_to='category/',
+        default='category/default.jpg'
+    )
     slug = models.SlugField(blank=True, null=True, unique=True)
     description = models.TextField(blank=True, null=True)
     is_featured = models.BooleanField(default=False)

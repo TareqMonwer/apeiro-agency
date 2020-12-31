@@ -23,6 +23,7 @@ django-anymail = {extras = ["mailgun"], version = "==8.0"}
 django-redis = "==4.12.1"
 Pillow = "==7.2.0"
 Unidecode = "==1.1.1"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.9"
