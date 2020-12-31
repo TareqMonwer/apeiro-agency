@@ -13,17 +13,18 @@ $(function($) {
     });
 
     // navfix
-    let navfix = $('.main_menu').offset().top;
+    // WARN: This crashes scrolling window
+    // let navfix = $('.main_menu').offset().top;
 
-    $(window).scroll(function() {
-        let scrolling = $(this).scrollTop();
+    // $(window).scroll(function () {
+    //     let scrolling = $(this).scrollTop();
 
-        if (scrolling > navfix) {
-            $('.main_menu').addClass('menufix');
-        } else {
-            $('.main_menu').removeClass('menufix');
-        }
-    })
+    //     if (scrolling > navfix) {
+    //         $('.main_menu').addClass('menufix');
+    //     } else {
+    //         $('.main_menu').removeClass('menufix');
+    //     }
+    // })
     $(function() {
         $('#easy-filter-wrap').easyFilter();
     });

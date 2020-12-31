@@ -5,8 +5,8 @@
 
 
 {% block content %}
-    <div class="container p-lg-0 mb-5">
-        <div class="page-header bg-primary">
+    <div class="container container-w-95 mb-5">
+        <div class="page-header bg-warning">
             <div class="page-header--content d-flex justify-content-between align-items-center">
                 <div class="page-header--title">
                     <h4 class="text-light">Categories</h4>
@@ -14,9 +14,9 @@
                 <div class="page-header--breadcrumb">
                     <ul class="breadcrumb p-0 m-0 bg-transparent">
                         <li class="breadcrumb-item">
-                            <a class="text-light" href="">Home</a>
+                            <a class="text-light small" href="">Home</a>
                         </li>
-                        <li class="breadcrumb-item">
+                        <li class="breadcrumb-item small">
                             <a class="text-light" href="">Categories</a>
                         </li>
                     </ul>
@@ -26,17 +26,21 @@
     </div>
 
     <div class="container">
-        <div class="row">
+        <div class="row" id="categories-section">
             <div class="col-lg-8">
-                <div class="listing-actions">
+                <!-- listview/gridview/filters -->
+                <div class="listing-actions mr-4">
                     <div class="listing-actions--wrapper d-flex justify-content-between align-items-center">
                         <div class="listing-actions--left">
-                            <a href="" class="text-dark listing-action-active">
+                            <a href="" class="text-dark mr-2 listing-action listing-action-active">
                                 <i class="fas fa-th-list"></i>
                             </a>
-                            <a href="" class="text-dark">
+                            <a href="" class="text-dark listing-action mr-2">
                                 <i class="fas fa-th"></i>
                             </a>
+                            <span class="text-muted small" id="listing-actions-result-summary">
+                                Showing 1–9 of 16 results
+                            </span>
                         </div>
                         <div class="listing-actions--right">
                             <form action="">
@@ -51,8 +55,228 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- category listing and pagination -->
+                <div class="row mt-4 categories-row pr-4">
+                    
+                    {% for category in categories %}
+                        <div class="col-lg-4 mb-4">
+                            <div class="category-card">
+                                <div class="category-card-img">
+                                    <img src="{{ category.category_icon.url }}" alt="">
+                                </div>
+                                <div class="category-card-metadata text-center py-2">
+                                    <p>{{ category.name }}</p>
+                                    <span class="text-muted">$2500</span>
+                                </div>
+                                <div class="category-card--actions">
+                                    <a href="" class="btn btn-warning">Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                        
+                    <!-- <div class="col-lg-4 mb-4">
+                        <div class="category-card">
+                            <div class="category-card-img">
+                                <img src="{% static 'images/products/product-1.jpg' %}" alt="">
+                            </div>
+                            <div class="category-card-metadata text-center py-2">
+                                <p>Category Name</p>
+                                <span class="text-muted">$2500</span>
+                            </div>
+                            <div class="category-card--actions">
+                                <a href="" class="btn btn-warning">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="category-card">
+                            <div class="category-card-img">
+                                <img src="{% static 'images/products/product-1.jpg' %}" alt="">
+                            </div>
+                            <div class="category-card-metadata text-center py-2">
+                                <p>Category Name</p>
+                                <span class="text-muted">$2500</span>
+                            </div>
+                            <div class="category-card--actions">
+                                <a href="" class="btn btn-warning">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="category-card">
+                            <div class="category-card-img">
+                                <img src="{% static 'images/products/product-1.jpg' %}" alt="">
+                            </div>
+                            <div class="category-card-metadata text-center py-2">
+                                <p>Category Name</p>
+                                <span class="text-muted">$2500</span>
+                            </div>
+                            <div class="category-card--actions">
+                                <a href="" class="btn btn-warning">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="category-card">
+                            <div class="category-card-img">
+                                <img src="{% static 'images/products/product-1.jpg' %}" alt="">
+                            </div>
+                            <div class="category-card-metadata text-center py-2">
+                                <p>Category Name</p>
+                                <span class="text-muted">$2500</span>
+                            </div>
+                            <div class="category-card--actions">
+                                <a href="" class="btn btn-warning">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4">
+                        <div class="category-card">
+                            <div class="category-card-img">
+                                <img src="{% static 'images/products/product-1.jpg' %}" alt="">
+                            </div>
+                            <div class="category-card-metadata text-center py-2">
+                                <p>Category Name</p>
+                                <span class="text-muted">$2500</span>
+                            </div>
+                            <div class="category-card--actions">
+                                <a href="" class="btn btn-warning">Details</a>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- paginator -->
+                    <div class="col-12 mt-5 py-4 top-border-5 border-light 
+                        d-flex justify-content-center">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination custom-pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <i class="fas fa-long-arrow-alt-left"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">
+                                        <i class="fas fa-long-arrow-alt-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-4"></div>
+            <div class="col-lg-4 pl-5">
+                <div class="category-list-sidebar ">
+                    <div class="sidegroup">
+                        <div class="sidegroup--title mb-3">
+                            <span class="halfline yellow-border"></span>
+                            <h4>Cart</h4>
+                        </div>
+                        <div class="sidebar-cart">
+                            <div class="sidebar-cart--cart-items">
+                                <div class="sidebarcart-item py-3 d-flex justify-content-between align-items-center border-bottom">
+                                    <div id="rm-item1" class="pointer cart-item-remover">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                    <div class="sidebarcart-item--img">
+                                        <img src="{% static 'images/products/product-1.jpg' %}" alt=""
+                                            width="65" height="65">
+                                    </div>
+                                    <div class="sidebarcart-item--info">
+                                        <p>Aglaonema Quadro - Blue</p>
+                                        <span class="text-muted">
+                                            2 x $400
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="sidebarcart-item py-3 d-flex justify-content-between align-items-center border-bottom">
+                                    <div id="rm-item1" class="pointer cart-item-remover">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                    <div class="sidebarcart-item--img">
+                                        <img src="{% static 'images/products/product-1.jpg' %}" alt=""
+                                            width="65" height="65">
+                                    </div>
+                                    <div class="sidebarcart-item--info">
+                                        <p>Aglaonema Quadro - Blue</p>
+                                        <span class="text-muted">
+                                            2 x $400
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="sidebarcart-item py-3 d-flex justify-content-between align-items-center border-bottom">
+                                    <div id="rm-item1" class="pointer cart-item-remover">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                    <div class="sidebarcart-item--img">
+                                        <img src="{% static 'images/products/product-1.jpg' %}" alt=""
+                                            width="65" height="65">
+                                    </div>
+                                    <div class="sidebarcart-item--info">
+                                        <p>Aglaonema Quadro - Blue</p>
+                                        <span class="text-muted">
+                                            2 x $400
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="sidebar-cart--cart-metadata">
+                                    <div class="sidebar-cart--subtotal py-3 small">
+                                        <p>Subtotal: $800</p>
+                                    </div>
+                                    <div class="sidebar-cart--actions">
+                                        <a href="" class="btn btn-sm btn-warning">
+                                            View Cart
+                                        </a>
+                                        <a href="" class="btn btn-sm btn-success">
+                                            Checkout
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div class="mt-5">
+        {% include 'partials/_footer.html' %}
+    </div>
 {% endblock content %}
+
+
+
+{% block javascript %}
+    <script>
+        const listingActionBtns = document.querySelectorAll('.listing-action');
+        let activeListingBtn = document.querySelector('.listing-action-active')
+        const cartItemRmBtns = document.querySelectorAll('.cart-item-remover');
+
+        function rmCartItem(){
+            this.parentNode.remove();
+        }
+
+        listingActionBtns.forEach(function(actionItem){
+            actionItem.addEventListener('click', function(e){
+                activeListingBtn.classList.remove('listing-action-active');
+                e.preventDefault();
+                actionItem.classList.toggle('listing-action-active');
+                activeListingBtn = actionItem;
+            });
+        });
+
+        cartItemRmBtns.forEach(function (item) {
+            item.addEventListener('click', rmCartItem);
+        });
+    </script>
+{% endblock javascript %}
+    

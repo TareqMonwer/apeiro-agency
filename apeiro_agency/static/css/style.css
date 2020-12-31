@@ -1,6 +1,7 @@
 :root {
   --theme-light: #f7f7f7;
   --theme-active: #eaaf25;
+  --theme-green: #759235;
 }
 
 * {
@@ -52,6 +53,10 @@ ol {
 } */
 
 /* GENERICS */
+.container-w-95 {
+  max-width: 96%;
+}
+
 .page-header {
   padding: 30px 98px;
 }
@@ -72,6 +77,57 @@ ol {
 
 .listing-action-active i {
   color: var(--theme-active);
+}
+
+.listing-actions select {
+  text-indent: 1px;
+  text-overflow: '';
+  width: 150px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 2px 2px 2px 2px;
+  border: none;
+  background: transparent url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") no-repeat 60px;
+  background-position: right;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.top-border-5 {
+  border-top-style: solid;
+  border-top-width: 5px;
+}
+.yellow-border {
+  border-bottom-color: var(--theme-active);
+}
+.border-light {
+  border-color: var(--theme-light);
+}
+
+/* UTILS (Paginator, button, form, range etc */
+.custom-pagination {
+  font-size: 12px;
+}
+.custom-pagination .page-item:first-child .page-link {
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+.custom-pagination .page-item:last-child .page-link {
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+.custom-pagination .page-link {
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: var(--theme-light);
+  color: #000;
+}
+.custom-pagination .page-item.active .page-link {
+  background-color: var(--theme-green);
+  border: none;
 }
 
 /* header part start*/
@@ -907,3 +963,66 @@ ol {
 } */
 
 /* contact part end */
+
+
+/* Category Lists */
+.sidegroup--title {
+  border-bottom: 2px solid rgb(187, 187, 187);
+  position: relative;
+}
+.halfline {
+  position: absolute;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  width: 40%;
+  bottom: -2px;
+}
+
+#categories-section {
+  position: relative;
+}
+
+.categories-row::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 5px;
+  display: inline-block;
+  border-right: 3px solid var(--theme-light);
+  right: 0;
+  top: 0;
+}
+
+.category-card {
+  position: relative;
+  transition: all linear 0.1s;
+}
+
+/* .category-card .category-card-img {
+  position: absolute;
+} */
+
+.category-card .category-card-img img {
+  width: 100%;
+}
+
+.category-card .category-card--actions {
+  /* display: none; */
+  opacity: 0;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all linear 0.3s;
+}
+
+.category-card:hover {
+  border: 3px solid var(--theme-active);
+}
+
+.category-card:hover.category-card .category-card--actions {
+  /* display: block; */
+  opacity: 1;
+  transition: all linear 0.3s;
+}
