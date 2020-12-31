@@ -127,9 +127,12 @@
                                     <ul>
                                         {% for service in category.services.all %}
                                             <li>
-                                                <a href="#">
+                                                <a href="{{ category.get_absolute_url }}">
                                                     <div class="item_box">
-                                                        <img src="{{ service.icon.url }}" alt="{{ service.name }}">
+                                                        <img src="{{ service.icon.url }}" 
+                                                            alt="{{ service.name }}"
+                                                            height="300"
+                                                            width="300">
                                                         <h5>{{ service.name }}</h5>
                                                     </div>
                                                 </a>

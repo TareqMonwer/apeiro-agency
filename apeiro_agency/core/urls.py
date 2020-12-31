@@ -14,5 +14,10 @@ urlpatterns = [
         views.category_list_view,
         name='category_list'
     ),
+    path(
+        "category/<slug:slug>/",
+        views.category_detail_view,
+        name='category_detail'
+    )
 ]
 

@@ -1,6 +1,7 @@
 from model_utils.models import TimeStampedModel
 
 from django.db import models
+from django.urls import reverse
 from django.utils.text import slugify
 
 
@@ -61,7 +62,13 @@ class ServiceCategory(TimeStampedModel):
     class Meta:
         ordering = ['name', '-created']
         verbose_name_plural = 'Service Categories'
-        
+    
+    def get_absolute_url(self):
+        return reverse(
+            'core:category_detail',
+            args=(),
+            kwargs={'slug': self.slug}
+        )    
     
     def __str__(self):
         return self.name
@@ -81,11 +88,17 @@ class Service(TimeStampedModel):
     )
     slug = models.SlugField(blank=True, null=True, unique=True)
     description = models.TextField(blank=True, null=True)
-    features = models.ManyToManyField(FeatureItem)
+    features = models.ManyToManyField(
+        FeatureItem,
+        blank=True,
+        null=True
+    )
     pricing = models.ForeignKey(
         PricingPlan,
         on_delete=models.CASCADE,
-        related_name='services'
+        related_name='services',
+        blank=True,
+        null=True
     )
     category = models.ForeignKey(
         ServiceCategory,

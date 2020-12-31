@@ -1,5 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, ListView
+from django.views.generic import (
+    TemplateView,
+    ListView,
+    DetailView
+)
 
 from .models import ServiceCategory
 
@@ -24,3 +28,13 @@ class CategoryListView(ListView):
     context_object_name = 'categories'
 
 category_list_view = CategoryListView.as_view()
+
+
+class CategoryDetailView(DetailView):
+    model = ServiceCategory
+    template_name = 'core/category_detail.html'
+    context_object_name = 'category'
+    slug_field = 'slug' 
+    slug_url_kwarg = 'slug' 
+
+category_detail_view = CategoryDetailView.as_view()

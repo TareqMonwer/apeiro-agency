@@ -9,15 +9,18 @@
         <div class="page-header bg-warning">
             <div class="page-header--content d-flex justify-content-between align-items-center">
                 <div class="page-header--title">
-                    <h4 class="text-light">Categories</h4>
+                    <h4 class="text-light">Services</h4>
                 </div>
                 <div class="page-header--breadcrumb">
                     <ul class="breadcrumb p-0 m-0 bg-transparent">
                         <li class="breadcrumb-item">
                             <a class="text-light small" href="">Home</a>
                         </li>
+                        <li class="breadcrumb-item">
+                            <a class="text-light small" href="">Categories</a>
+                        </li>
                         <li class="breadcrumb-item small">
-                            <a class="text-light" href="">Categories</a>
+                            <a class="text-muted" href="">Services</a>
                         </li>
                     </ul>
                 </div>
@@ -59,7 +62,7 @@
                 <!-- category listing and pagination -->
                 <div class="row mt-4 categories-row pr-4">
                     
-                    {% for category in categories %}
+                    {% for service in category.services.all %}
                         <div class="col-lg-4 mb-4">
                             <div class="category-card">
                                 <div class="category-card-img">
@@ -67,7 +70,7 @@
                                 </div>
                                 <div class="category-card-metadata text-center py-2">
                                     <a href="{{ category.get_absolute_url }}">
-                                        <p>{{ category.name }}</p>
+                                        <p>{{ service.name }}</p>
                                     </a>    
                                     <span class="text-muted">$2500</span>
                                 </div>
@@ -82,77 +85,6 @@
                             </div>
                         </div>
                     {% endfor %}
-                        
-                    <!-- <div class="col-lg-4 mb-4">
-                        <div class="category-card">
-                            <div class="category-card-img">
-                                <img src="{% static 'images/products/product-1.jpg' %}" alt="">
-                            </div>
-                            <div class="category-card-metadata text-center py-2">
-                                <p>Category Name</p>
-                                <span class="text-muted">$2500</span>
-                            </div>
-                            <div class="category-card--actions">
-                                <a href="" class="btn btn-warning">Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
-                        <div class="category-card">
-                            <div class="category-card-img">
-                                <img src="{% static 'images/products/product-1.jpg' %}" alt="">
-                            </div>
-                            <div class="category-card-metadata text-center py-2">
-                                <p>Category Name</p>
-                                <span class="text-muted">$2500</span>
-                            </div>
-                            <div class="category-card--actions">
-                                <a href="" class="btn btn-warning">Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
-                        <div class="category-card">
-                            <div class="category-card-img">
-                                <img src="{% static 'images/products/product-1.jpg' %}" alt="">
-                            </div>
-                            <div class="category-card-metadata text-center py-2">
-                                <p>Category Name</p>
-                                <span class="text-muted">$2500</span>
-                            </div>
-                            <div class="category-card--actions">
-                                <a href="" class="btn btn-warning">Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
-                        <div class="category-card">
-                            <div class="category-card-img">
-                                <img src="{% static 'images/products/product-1.jpg' %}" alt="">
-                            </div>
-                            <div class="category-card-metadata text-center py-2">
-                                <p>Category Name</p>
-                                <span class="text-muted">$2500</span>
-                            </div>
-                            <div class="category-card--actions">
-                                <a href="" class="btn btn-warning">Details</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 mb-4">
-                        <div class="category-card">
-                            <div class="category-card-img">
-                                <img src="{% static 'images/products/product-1.jpg' %}" alt="">
-                            </div>
-                            <div class="category-card-metadata text-center py-2">
-                                <p>Category Name</p>
-                                <span class="text-muted">$2500</span>
-                            </div>
-                            <div class="category-card--actions">
-                                <a href="" class="btn btn-warning">Details</a>
-                            </div>
-                        </div>
-                    </div> -->
 
                     <!-- paginator -->
                     <div class="col-12 mt-5 py-4 top-border-5 border-light 
@@ -186,54 +118,7 @@
                         </div>
                         <div class="sidebar-cart">
                             <div class="sidebar-cart--cart-items">
-                                <!-- <div class="sidebarcart-item py-3 d-flex align-items-center border-bottom">
-                                    <div id="rm-item1" class="pointer cart-item-remover">
-                                        <i class="fas fa-times"></i>
-                                    </div>
-                                    <div class="sidebarcart-item--img">
-                                        <img src="{% static 'images/products/product-1.jpg' %}" alt=""
-                                            width="65" height="65">
-                                    </div>
-                                    <div class="sidebarcart-item--info">
-                                        <p>Aglaonema Quadro - Blue</p>
-                                        <span class="text-muted">
-                                            2 x $400
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="sidebarcart-item py-3 d-flex 
-                                    align-items-center border-bottom">
-                                    <div id="rm-item1" class="pointer cart-item-remover">
-                                        <i class="fas fa-times"></i>
-                                    </div>
-                                    <div class="sidebarcart-item--img">
-                                        <img src="{% static 'images/products/product-1.jpg' %}" alt=""
-                                            width="65" height="65">
-                                    </div>
-                                    <div class="sidebarcart-item--info">
-                                        <p>Aglaonema Quadro - Blue</p>
-                                        <span class="text-muted">
-                                            2 x $400
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div class="sidebarcart-item py-3 d-flex  align-items-center border-bottom">
-                                    <div id="rm-item1" class="pointer cart-item-remover">
-                                        <i class="fas fa-times"></i>
-                                    </div>
-                                    <div class="sidebarcart-item--img">
-                                        <img src="{% static 'images/products/product-1.jpg' %}" alt=""
-                                            width="65" height="65">
-                                    </div>
-                                    <div class="sidebarcart-item--info">
-                                        <p>Aglaonema Quadro - Blue</p>
-                                        <span class="text-muted">
-                                            2 x $400
-                                        </span>
-                                    </div>
-                                </div> -->
+                                <!-- Updated from JS -->
                             </div>
                             <div class="sidebar-cart--cart-metadata">
                                 <div class="sidebar-cart--subtotal py-3 small">
