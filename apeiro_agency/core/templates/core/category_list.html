@@ -269,10 +269,21 @@
         var cartItemRmBtns = document.querySelectorAll('.cart-item-remover');
         const addToCartBtns = document.querySelectorAll('.add-to-cart');
         const sidebarCartItemsContainer = document.querySelector('.sidebar-cart--cart-items');
+        const subtotalElem = document.querySelector('.sidebar-cart--subtotal p');
+
+        function checknUpdateSubtotal(){
+            if (sidebarCartItemsContainer.children.length <= 0) {
+                subtotalElem.textContent = 'No items in the cart';
+            } else {
+                // show subtotal amount in the container element.
+                subtotalElem.textContent = `Subtotal: $1000`;
+            }
+        }
 
         function rmCartItem(){
             const elem = event.target.parentNode.parentNode;
             elem.remove();
+            checknUpdateSubtotal();
         }
 
         function addToCart() {
@@ -304,11 +315,13 @@
                 `;
                 sidebarCartItemsContainer.insertAdjacentHTML('beforeend', newCartItem);
                 cartItemRmBtns = document.querySelectorAll('.cart-item-remover');
+                checknUpdateSubtotal();
             }).then(function(err){
-                console.log(err, 'FAILEDDDDDD');
+                // console.log(err, 'FAILEDDDDDD');
             })
         }
 
+        // table, grid view, range
         listingActionBtns.forEach(function(actionItem){
             actionItem.addEventListener('click', function(e){
                 activeListingBtn.classList.remove('listing-action-active');
@@ -321,6 +334,11 @@
         addToCartBtns.forEach(function(category){
             category.addEventListener('click', addToCart)
         });
+
+        // IFEES
+        (function(){
+            checknUpdateSubtotal();
+        })()
     </script>
 {% endblock javascript %}
     
