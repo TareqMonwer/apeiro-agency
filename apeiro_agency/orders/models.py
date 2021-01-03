@@ -12,7 +12,6 @@ class Basket(models.Model):
         (OPEN, "Open"),
         (SUBMITTED, "Submitted")
     )
-
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -25,16 +24,17 @@ class Basket(models.Model):
     )
 
     def is_empty(self):
-        return self.basketline_set.all().count() == 0
+        return self.basketlines.all().count() == 0
 
     def count(self):
-        return sum(i.quantity for i in self.basketline_set.all())
+        return sum(i.quantity for i in self.basketlines.all())
 
 
 class BasketLine(models.Model):
     basket = models.ForeignKey(
         Basket,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='basketlines'
     )
     service = models.ForeignKey(
         Service,

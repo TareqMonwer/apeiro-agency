@@ -16,6 +16,7 @@ urlpatterns = [
         "users/",
         include("apeiro_agency.users.urls", namespace="users"),
     ),
+    path('orders/', include('orders.urls', namespace='orders')),
     path("accounts/", include("allauth.urls")),
     path('api-auth/', include('rest_framework.urls')),
     path('api/core/', include('core.api_routes')),

@@ -27,4 +27,4 @@ def add_to_basket(request):
     if not created:
         basketline.quantity = 1
         basketline.save()
-    return HttpResponseRedirect(reverse('service', args=(product.slug, )))
+    return HttpResponseRedirect(reverse('core:category_detail', args=(service.slug, )))
