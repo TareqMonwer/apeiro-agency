@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 from django.urls import reverse
 from core.models import Service
 from .models import Basket, BasketLine
@@ -27,4 +27,4 @@ def add_to_basket(request):
     if not created:
         basketline.quantity = 1
         basketline.save()
-    return HttpResponseRedirect(reverse('core:category_detail', args=(service.slug, )))
+    return JsonResponse({'status': 1})

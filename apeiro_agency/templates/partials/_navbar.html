@@ -36,17 +36,21 @@
                     </div>
                 </li>
                 <li>
-                    <div class="cart">
-                        <i class="fas fa-shopping-cart"></i>
-                        <p>
-                            {% if request.basket %}
-                                <div class="cartcount badge badge-danger">
-                                    {{ request.basket.count }}
-                                </div>
-                            {% else %}
-                                cart
-                            {% endif %}
-                        </p>
+                    <div class="cart mr-2">
+                        <i class="fas fa-shopping-cart mr-0"></i>
+                        {% if request.basket %}
+                            <div class="cartcount">
+                                <sup>
+                                    <span class="badge badge-danger cartcount-number">
+                                        {{ request.basket.count }}
+                                    </span>
+                                </sup>
+                            </div>
+                        {% else %}
+                            <span class="badge badge-danger cartcount-number">
+                                0
+                            </span>
+                        {% endif %}
                     </div>
                 </li>
                 {% if request.user.is_authenticated %}

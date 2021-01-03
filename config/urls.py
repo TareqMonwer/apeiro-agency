@@ -20,6 +20,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path('api-auth/', include('rest_framework.urls')),
     path('api/core/', include('core.api_routes')),
+    path('api/orders/', include('orders.api_routes')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

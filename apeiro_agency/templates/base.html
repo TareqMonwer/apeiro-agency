@@ -55,22 +55,23 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <!-- Bootstrap JS and its dependencies-->
+    <script src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/waypoints.min.js' %}"></script>
+    <script src="{% static 'js/venobox.min.js' %}"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <script src="{% static 'js/maugallery.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+
+    <!-- Third-party javascript libraries go here -->
+
+
+    <!-- place project specific Javascript in this file -->
+    <script src="{% static 'js/project.js' %}"></script>
     {% block javascript %}
-        <!-- Bootstrap JS and its dependencies-->
-        <script src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
-        <script src="{% static 'js/bootstrap.min.js' %}"></script>
-        <script src="{% static 'js/popper.min.js' %}"></script>
-        <script src="{% static 'js/waypoints.min.js' %}"></script>
-        <script src="{% static 'js/venobox.min.js' %}"></script>
-        <script src="{% static 'js/slick.min.js' %}"></script>
-        <script src="{% static 'js/maugallery.js' %}"></script>
-        <script src="{% static 'js/script.js' %}"></script>
-
-        <!-- Third-party javascript libraries go here -->
-
-
-        <!-- place project specific Javascript in this file -->
-        <script src="{% static 'js/project.js' %}"></script>
+        
     {% endblock javascript %}
     </body>
 </html>
