@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.urls import reverse
 from core.models import Service
 from .models import Basket, BasketLine
-
+from .forms import basketline_formset
 
 
 def add_to_basket(request):
@@ -28,3 +28,21 @@ def add_to_basket(request):
         basketline.quantity = 1
         basketline.save()
     return JsonResponse({'status': 1})
+
+
+def manage_basket(request):
+    if not request.basket or request.basket.is_empty():
+        return render(request, 'orders/basket.html', {'formset': None})
+    
+    if request.method == 'POST':
+        formset = basketline_formset(
+            request.POST, instance=request.basket,
+        )
+        if formset.is_valid():
+            formset.save()
+    else:
+        formset = basketline_formset(
+            instance=request.basket,
+        )
+    
+    return  render(request, 'orders/basket.html', {'formset': formset})
