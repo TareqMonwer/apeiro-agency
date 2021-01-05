@@ -3,25 +3,27 @@
 
 
 {% block content %}
-    <h2>Basket</h2>
+    <div class="container">
+        <h2>Basket</h2>
 
-    {% if formset %}
-        <p>You can adjust the quantities bellow.</p>
+        {% if formset %}
+            <p>You can adjust the quantities bellow.</p>
 
-        <form action="" method="post">
-            {% csrf_token %}
-            {{ formset.management_form }}
-            
-            {% for form in formset %}
-                <p>
-                    {{ form.instance.product.name }}
-                    {{ form }}
-                </p>
-            {% endfor %}
-            <input type="submit" value="Update Basket" class="btn btn-default">
-        </form>
-    {% else %}
-        <p>You have no items in the cart.</p>
-    {% endif %}
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ formset.management_form }}
+                
+                {% for form in formset %}
+                    <p>
+                        {{ form.instance.service.name }}
+                        {{ form }}
+                    </p>
+                {% endfor %}
+                <input type="submit" value="Update Basket" class="btn btn-success">
+            </form>
+        {% else %}
+            <p>You have no items in the cart.</p>
+        {% endif %}
+    </div>
         
 {% endblock content %}

@@ -37,19 +37,26 @@
                 </li>
                 <li>
                     <div class="cart mr-2">
-                        <i class="fas fa-shopping-cart mr-0"></i>
+                        <a class="text-dark" href="{% url 'orders:cart' %}">
+                            <i class="fas fa-shopping-cart mr-0"></i>
+                        </a>
+                        
                         {% if request.basket %}
                             <div class="cartcount">
+                                <a class="text-light" href="{% url 'orders:cart' %}">
                                 <sup>
                                     <span class="badge badge-danger cartcount-number">
                                         {{ request.basket.count }}
                                     </span>
                                 </sup>
+                                </a>
                             </div>
                         {% else %}
-                            <span class="badge badge-danger cartcount-number">
-                                0
-                            </span>
+                            <a href="{% url 'orders:cart' %}">
+                                <span class="badge badge-danger cartcount-number">
+                                    0
+                                </span>
+                            </a>
                         {% endif %}
                     </div>
                 </li>

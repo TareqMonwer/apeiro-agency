@@ -159,11 +159,41 @@
         const addToCartBtns = document.querySelectorAll('.add-to-cart');
         const sidebarCartItemsContainer = document.querySelector('.sidebar-cart--cart-items');
 
+        (function() {
+            fetch('{% url "get_basket_items" %}')
+                .then((response) => response.json())
+                .then((data) => {
+                    data.forEach((item) => {
+                        let str = '';
+                        str += `
+                        <div class="sidebarcart-item py-3 d-flex
+                            align-items-center border-bottom">
+                            <div id="rm-item-${item.service.id}" class="pointer cart-item-remover mr-3"
+                                onclick="rmCartItem()">
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <div class="sidebarcart-item--img mr-3">
+                                <img src="${item.service.icon}" alt=""
+                                    width="65" height="65">
+                            </div>
+                            <div class="sidebarcart-item--info">
+                                <p>${ item.service.name }</p>
+                                <span class="text-muted">
+                                    2 x $400
+                                </span>
+                            </div>
+                        </div>
+                        `;
+                        sidebarCartItemsContainer.insertAdjacentHTML('beforeend', str);
+                        cartItemRmBtns = document.querySelectorAll('.cart-item-remover');
+                    })
+                })
+        })()
+        
         function rmCartItem(){
             const elem = event.target.parentNode.parentNode;
             elem.remove();
         }
-
 
         function updateCartQuantityNav(){
             fetch('{% url "get_basket_count" %}')
