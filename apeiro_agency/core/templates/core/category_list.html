@@ -27,7 +27,7 @@
 
     <div class="container">
         <div class="row" id="categories-section">
-            <div class="col-lg-8">
+            <div class="col-12">
                 <!-- listview/gridview/filters -->
                 <div class="listing-actions mr-4">
                     <div class="listing-actions--wrapper d-flex justify-content-between align-items-center">
@@ -46,10 +46,9 @@
                             <form action="">
                                 <select name="" id="">
                                     <option value="" selected>select an option</option>
-                                    <option value="">Option 1</option>
-                                    <option value="">Option 1</option>
-                                    <option value="">Option 1</option>
-                                    <option value="">Option 1</option>
+                                    <option value="">Order by A - Z</option>
+                                    <option value="">Order by Newest Arrival</option>
+                                    <option value="">Order by Most Browsed</option>
                                 </select>
                             </form>
                         </div>
@@ -60,7 +59,7 @@
                 <div class="row mt-4 categories-row pr-4">
                     
                     {% for category in categories %}
-                        <div class="col-lg-4 mb-4">
+                        <div class="col-sm-12 col-md-4 mb-4">
                             <div class="category-card">
                                 <div class="category-card-img">
                                     <img src="{{ category.image.url }}" alt="">
@@ -72,9 +71,6 @@
                                     </a>
                                 </div>
                                 <div class="category-card--actions">
-                                    <button data-category-id="{{ category.id }}"
-                                        class="btn btn-success mb-2 add-to-cart">Add to cart
-                                    </button>
                                     <a href="{{ category.get_absolute_url }}" 
                                         class="btn btn-warning">Details
                                     </a>
@@ -106,34 +102,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 pl-5">
-                <div class="category-list-sidebar ">
-                    <div class="sidegroup">
-                        <div class="sidegroup--title mb-3">
-                            <span class="halfline yellow-border"></span>
-                            <h4>Cart</h4>
-                        </div>
-                        <div class="sidebar-cart">
-                            <div class="sidebar-cart--cart-items">
-                                <!-- Managed By JS -->
-                            </div>
-                            <div class="sidebar-cart--cart-metadata">
-                                <div class="sidebar-cart--subtotal py-3 small">
-                                    <p>Subtotal: $800</p>
-                                </div>
-                                <div class="sidebar-cart--actions">
-                                    <a href="" class="btn btn-sm btn-warning">
-                                        View Cart
-                                    </a>
-                                    <a href="" class="btn btn-sm btn-success">
-                                        Checkout
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -149,60 +117,6 @@
     <script>
         const listingActionBtns = document.querySelectorAll('.listing-action');
         let activeListingBtn = document.querySelector('.listing-action-active')
-        var cartItemRmBtns = document.querySelectorAll('.cart-item-remover');
-        const addToCartBtns = document.querySelectorAll('.add-to-cart');
-        const sidebarCartItemsContainer = document.querySelector('.sidebar-cart--cart-items');
-        const subtotalElem = document.querySelector('.sidebar-cart--subtotal p');
-
-        function checknUpdateSubtotal(){
-            if (sidebarCartItemsContainer.children.length <= 0) {
-                subtotalElem.textContent = 'No items in the cart';
-            } else {
-                // show subtotal amount in the container element.
-                subtotalElem.textContent = `Subtotal: $1000`;
-            }
-        }
-
-        function rmCartItem(){
-            const elem = event.target.parentNode.parentNode;
-            elem.remove();
-            checknUpdateSubtotal();
-        }
-
-        function addToCart() {
-            categoryId = this.dataset.categoryId;
-            const url = `/api/core/category/${categoryId}`;
-            fetch(url, {
-                method: 'GET',
-            }).then(function(response){
-                return response.json();
-            }).then(function(data){
-                const newCartItem = `
-                <div class="sidebarcart-item py-3 d-flex
-                    align-items-center border-bottom">
-                    <div id="rm-item-${data.id}" class="pointer cart-item-remover mr-3"
-                        onclick="rmCartItem()">
-                        <i class="fas fa-times"></i>
-                    </div>
-                    <div class="sidebarcart-item--img mr-3">
-                        <img src="${data.image}" alt=""
-                            width="65" height="65">
-                    </div>
-                    <div class="sidebarcart-item--info">
-                        <p>${ data.name }</p>
-                        <span class="text-muted">
-                            2 x $400
-                        </span>
-                    </div>
-                </div>
-                `;
-                sidebarCartItemsContainer.insertAdjacentHTML('beforeend', newCartItem);
-                cartItemRmBtns = document.querySelectorAll('.cart-item-remover');
-                checknUpdateSubtotal();
-            }).then(function(err){
-                // console.log(err, 'FAILEDDDDDD');
-            })
-        }
 
         // table, grid view, range
         listingActionBtns.forEach(function(actionItem){
@@ -217,11 +131,6 @@
         addToCartBtns.forEach(function(category){
             category.addEventListener('click', addToCart)
         });
-
-        // IFEES
-        (function(){
-            checknUpdateSubtotal();
-        })()
     </script>
 {% endblock javascript %}
     

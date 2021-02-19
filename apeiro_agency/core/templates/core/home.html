@@ -48,54 +48,13 @@
     </section>
     <!-- banner part end -->
 
-    <!-- what we do part start -->
-    <section id="about_full">
-        <div class="container p-lg-0">
-            <div class="row text-center">
-                <div class="col-lg-12">
-                    <div class="about_head">
-                        <h2>What we Do</h2>
-                        <p>We create experiences that transfrom brands, grow business<br>and make people’s lives better</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 text-center">
-                    <div class="ab_details">
-                        <a href="#"><i class="fab fa-searchengin"></i></a>
-                        <p>Research</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 text-center">
-                    <div class="ab_details">
-                        <a href="#"><i class="fas fa-chess-knight"></i></a>
-                        <p>Strategy</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 text-center">
-                    <div class="ab_details">
-                        <a href="#"><i class="fas fa-drafting-compass"></i></a>
-                        <p>Design</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 text-center">
-                    <div class="ab_details">
-                        <a href="#"><i class="fas fa-microchip"></i></a>
-                        <p>Technology</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- what we do part end -->
-
     <!-- Your identity part start -->
     <section id="identity_full">
         <div class="container p-lg-0">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <div class="identity_head">
-                        <h2>Your Identity</h2>
+                    <div class="mt-5">
+                        <h2>Browse Our Products</h2>
                     </div>
                 </div>
             </div>
@@ -118,115 +77,11 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="catagoys_item">
-                        <div class="tab-content cl_rout" id="pills-tabContent">
-                            {% for category in featured_categories %}
-                                <div class="tab-pane fade{% if forloop.counter == 1 %} show active{% endif %}" 
-                                    id="{{ category.name|slugify }}_data" 
-                                    role="tabpanel" aria-labelledby="pills-{{ category.pk }}-tab">
-                                    <ul>
-                                        {% for service in category.services.all %}
-                                            <li>
-                                                <a href="{{ category.get_absolute_url }}">
-                                                    <div class="item_box">
-                                                        <img src="{{ service.icon.url }}" 
-                                                            alt="{{ service.name }}"
-                                                            height="300"
-                                                            width="300">
-                                                        <h5>{{ service.name }}</h5>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                    <div class="catagory_banner">
-                                        <div class="catagory_banner_text">
-                                            <h4>{{ service.name }}</h4>
-                                            <p>
-                                                {{ service.description|default:'From integrated advertising campaigns to service design, we approach our projects with strategic and creative' }}
-                                            </p>
-                                        </div>
-                                        <div class="catagory_banner_icon">
-                                            <i class="fas fa-laptop-code"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Your identity part end -->
-
-    <!-- way to manage part start -->
-    <section id="waymanage_full">
-        <div class="container p-lg-0">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="identity_head">
-                        <h2>Your Ways To Manage</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="catagoys_btn">
-                        <ul class="nav nav-pills mb-3 cl_menu" id="pills-tab" role="tablist">
-                            {% for category in featured_categories %}
-                                <li class="nav-item">
-                                    <a class="nav-link text-light {% if forloop.counter == 1 %}active{% endif %}" 
-                                        id="pills-wm{{ category.pk }}-tab" data-toggle="pill" 
-                                        href="#wm{{ category.name|slugify }}_data" role="tab" aria-controls="pills-wm{{ category.pk }}" 
-                                        aria-selected="true">
-                                        <img src="{{ category.category_icon.url }}" alt="">
-                                    </a>
-                                </li>
-                            {% endfor %}
-                            <li>
-                                <a href="{% url 'core:category_list' %}" class="maroff">View More Catagory</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="catagoys_item">
-                        <div class="tab-content cl_rout" id="pills-tabContent">
-                            {% for category in featured_categories %}
-                                <div class="tab-pane fade{% if forloop.counter == 1 %} show active{% endif %}" 
-                                    id="wm{{ category.name|slugify }}_data" 
-                                    role="tabpanel" aria-labelledby="pills-wm{{ category.pk }}-tab">
-                                    <ul>
-                                        {% for service in category.services.all %}
-                                            <li>
-                                                <a href="#">
-                                                    <div class="item_box">
-                                                        <img src="{{ service.icon.url }}" alt="{{ service.name }}">
-                                                        <h5>{{ service.name }}</h5>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                    <div class="catagory_banner">
-                                        <div class="catagory_banner_text">
-                                            <h4>{{ service.name }}</h4>
-                                            <p>
-                                                {{ service.description|default:'From integrated advertising campaigns to service design, we approach our projects with strategic and creative' }}
-                                            </p>
-                                        </div>
-                                        <div class="catagory_banner_icon">
-                                            <i class="fas fa-laptop-code"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- way to manage part end -->
 
     <!-- newslatter part start -->
     <section id="newslatter_full">
@@ -245,24 +100,7 @@
         </div>
     </section>
     <!-- news latter part end -->
-
-    <!-- review part start -->
-    <section id="review_full">
-        <div class="container p-lg-0">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <div class="review_inner">
-                        <img src="{% static 'images/asset1.png' %}" alt="">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                        <h6>Sandy Cooper</h6>
-                        <img src="{% static 'images/Ellipse 6.png' %}" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- review part end -->
-
+    
     <!-- Footer -->
     {% include 'partials/_footer.html' %}
 
