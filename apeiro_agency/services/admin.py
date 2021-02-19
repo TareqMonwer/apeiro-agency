@@ -4,10 +4,19 @@ from .models import Service, ServiceCategory
 
 @admin.register(ServiceCategory)
 class AdminServiceCategory(admin.ModelAdmin):
-    list_display = ('id', 'name', 'slug', 'created', 'is_featured')
+    list_display = ('id', 'name', 'created', 'is_featured')
     list_editable = ('is_featured', )
 
 
 @admin.register(Service)
 class AdminService(admin.ModelAdmin):
-    list_display = ('name', 'pricing',)
+
+    def impression_count(self, obj):
+        impressions = obj.impressions.all()
+        return sum(impression.count for impression in impressions)
+    impression_count.short_description = 'Total impressions'
+
+    list_display = ('id', 'name', 'vendor', 'created',
+        'is_verified', 'impression_count'
+    )
+    list_editable = ('is_verified', )

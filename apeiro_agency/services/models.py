@@ -1,10 +1,12 @@
 from model_utils.models import TimeStampedModel
 
+from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 
 from core.models import FeatureItem, PricingPlan
+from service_analytics.models import Impression
 
 
 class ServiceCategory(TimeStampedModel):
@@ -46,21 +48,25 @@ class ServiceCategory(TimeStampedModel):
 
 class Service(TimeStampedModel):
     name = models.CharField(max_length=100, unique=True)
-    icon = models.ImageField(
-        upload_to='service_icons/',
-        default='service_icons/default.png'
-    )
     slug = models.SlugField(blank=True, null=True, unique=True)
+    primary_image = models.ImageField(
+        upload_to='services/primary-images/',
+        blank=True,
+        default='services/primary-images/default.jpg'
+    )
     description = models.TextField(blank=True, null=True)
+    vendor = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        related_name='services',
+        on_delete=models.CASCADE
+    )
     features = models.ManyToManyField(
         FeatureItem,
-        blank=True,
-        null=True
+        blank=True
     )
     pricing = models.ForeignKey(
         PricingPlan,
         on_delete=models.CASCADE,
-        related_name='services',
         blank=True,
         null=True
     )
@@ -69,6 +75,7 @@ class Service(TimeStampedModel):
         on_delete=models.CASCADE,
         related_name='services'
     )
+    is_verified = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['name', '-created']
@@ -82,4 +89,3 @@ class Service(TimeStampedModel):
         if not update:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
-

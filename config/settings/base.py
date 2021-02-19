@@ -89,6 +89,7 @@ LOCAL_APPS = [
     "apeiro_agency.core.apps.CoreConfig",
     "apeiro_agency.orders.apps.OrdersConfig",
     "apeiro_agency.services.apps.ServicesConfig",
+    "apeiro_agency.service_analytics.apps.ServiceAnalyticsConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

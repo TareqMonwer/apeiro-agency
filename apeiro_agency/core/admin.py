@@ -2,7 +2,8 @@ from django.contrib import admin
 
 from .models import (
     FeatureItem,
-    PricingPlan
+    PricingPlan,
+    Photo
 )
 
 
@@ -17,3 +18,8 @@ class AdminPricingPlan(admin.ModelAdmin):
         'title', 'monthly_price',
         'annual_price', 'ontime_pay'
     )
+
+
+@admin.register(Photo)
+class PhotoAdmin(admin.ModelAdmin):
+    list_display = ('content_type', 'object_id', 'item')
