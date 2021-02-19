@@ -1,11 +1,13 @@
-from django.shortcuts import render
+from django.db.models import Count
+from django.shortcuts import render, get_object_or_404
+from django.views.generic.base import TemplateResponseMixin, View
 from django.views.generic import (
     TemplateView,
     ListView,
     DetailView
 )
 
-from .models import ServiceCategory
+from .models import ServiceCategory, Service
 
 
 class HomePageView(TemplateView):
@@ -21,6 +23,26 @@ class HomePageView(TemplateView):
 
 home_page_view = HomePageView.as_view()
 
+
+class ServiceListView(TemplateResponseMixin, View):
+    model = Service
+    template_name = 'services/products.html'
+
+    def get(self, request, category=None):
+        categories = ServiceCategory.objects.annotate(
+            total_services=Count('services'))
+        services = Service.objects.all()
+
+        if category:
+            category = get_object_or_404(ServiceCategory, slug=category)
+            services = services.filter(category=category)
+        return self.render_to_response({
+            'categories': categories,
+            'category': category,
+            'services': services
+        })
+
+service_list_view = ServiceListView.as_view()
 
 class CategoryListView(ListView):
     model = ServiceCategory

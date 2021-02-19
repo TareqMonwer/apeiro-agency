@@ -685,3 +685,11 @@ ol {
   opacity: 1;
   transition: all linear 0.3s;
 }
+
+.col-lg-12 .category-card-img img {
+  height: 100%;
+}
+
+.col-lg-12 .category-card-img {
+  height: 300px;
+}

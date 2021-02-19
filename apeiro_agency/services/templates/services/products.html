@@ -9,7 +9,13 @@
     <div class="page-header bg-warning">
         <div class="page-header--content d-flex justify-content-between align-items-center">
             <div class="page-header--title">
-                <h4 class="text-light">Categories</h4>
+                <h4 class="text-light">
+                    {% if category %}
+                        {{ category }}
+                    {% else %}
+                        Services
+                    {% endif %}
+                </h4>
             </div>
             <div class="page-header--breadcrumb">
                 <ul class="breadcrumb p-0 m-0 bg-transparent">
@@ -45,11 +51,12 @@
                     <div class="listing-actions--right">
                         <form action="">
                             <select name="" id="">
-                                <option value="" selected>select an option</option>
-                                <option value="">Option 1</option>
-                                <option value="">Option 1</option>
-                                <option value="">Option 1</option>
-                                <option value="">Option 1</option>
+                                <option value="" selected>Choose a category</option>
+                                {% for category in categories %}
+                                    <option value="{{ category.slug }}">
+                                        {{ category.name }}
+                                    </option>
+                                {% endfor %}
                             </select>
                         </form>
                     </div>
@@ -59,23 +66,23 @@
             <!-- category listing and pagination -->
             <div class="row mt-4 categories-row row-left-border pr-4">
 
-                {% for category in categories %}
-                <div class="col-lg-4 mb-4">
+                {% for service in services %}
+                <div class="col-lg-4 mb-4 single-service-column">
                     <div class="category-card">
                         <div class="category-card-img">
-                            <img src="{{ category.image.url }}" alt="">
+                            <img src="{{ service.primary_image.url }}" alt="">
                         </div>
                         <div class="category-card-metadata text-center py-2">
-                            <a class="d-block" href="{{ category.get_absolute_url }}">
-                                <p>{{ category.name }}</p>
+                            <a class="d-block" href="{{ service.get_absolute_url }}">
+                                <p>{{ service.name }}</p>
                                 <span class="text-muted">$2500</span>
                             </a>
                         </div>
                         <div class="category-card--actions">
-                            <button data-category-id="{{ category.id }}" class="btn btn-success mb-2 add-to-cart">Add to
+                            <button data-service-id="{{ service.id }}" class="btn btn-success mb-2 add-to-cart">Add to
                                 cart
                             </button>
-                            <a href="{{ category.get_absolute_url }}" class="btn btn-warning">Details
+                            <a href="{{ service.get_absolute_url }}" class="btn btn-warning">Details
                             </a>
                         </div>
                     </div>
@@ -149,6 +156,7 @@
     const listingActionBtns = document.querySelectorAll('.listing-action');
     let activeListingBtn = document.querySelector('.listing-action-active')
     var cartItemRmBtns = document.querySelectorAll('.cart-item-remover');
+    let service_grids = document.querySelectorAll('.single-service-column');
     const addToCartBtns = document.querySelectorAll('.add-to-cart');
     const sidebarCartItemsContainer = document.querySelector('.sidebar-cart--cart-items');
     const subtotalElem = document.querySelector('.sidebar-cart--subtotal p');
@@ -169,8 +177,8 @@
     }
 
     function addToCart() {
-        categoryId = this.dataset.categoryId;
-        const url = `/api/services/category/${categoryId}`;
+        serviceId = this.dataset.serviceId;
+        const url = `/api/services/category/${serviceId}`;
         fetch(url, {
             method: 'GET',
         }).then(function (response) {
@@ -203,13 +211,23 @@
         })
     }
 
-    // table, grid view, range
+    // table, grid view, range functions
+    function toggle_grid_view(actionItem) {
+        activeListingBtn.classList.remove('listing-action-active');
+        let service_grids = document.querySelectorAll('.single-service-column');
+        service_grids.forEach(function(item) {
+            item.classList.toggle('col-lg-12');
+            actionItem.classList.add('listing-action-active');
+            activeListingBtn = actionItem;
+        })
+    }
+
+    // table grid view event handlers
     listingActionBtns.forEach(function (actionItem) {
         actionItem.addEventListener('click', function (e) {
-            activeListingBtn.classList.remove('listing-action-active');
+            e.stopPropagation();
             e.preventDefault();
-            actionItem.classList.toggle('listing-action-active');
-            activeListingBtn = actionItem;
+            toggle_grid_view(actionItem)
         });
     });
 

@@ -33,7 +33,7 @@ class ServiceCategory(TimeStampedModel):
     
     def get_absolute_url(self):
         return reverse(
-            'services:category_detail',
+            'services:category_service_list',
             args=(),
             kwargs={'slug': self.slug}
         )    

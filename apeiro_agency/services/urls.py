@@ -15,9 +15,14 @@ urlpatterns = [
         name='category_list'
     ),
     path(
-        "category/<slug:slug>/",
-        views.category_detail_view,
-        name='category_detail'
-    )
+        "services/",
+        views.service_list_view,
+        name='service_list'
+    ),
+    path(
+        "services/<slug:category>/",
+        views.service_list_view,
+        name='category_service_list'
+    ),
 ]
 
