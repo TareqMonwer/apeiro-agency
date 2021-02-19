@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Service, ServiceCategory
+from .models import Service, ServiceCategory, ServicePhoto
 
 
 @admin.register(ServiceCategory)
@@ -20,3 +20,8 @@ class AdminService(admin.ModelAdmin):
         'is_verified', 'impression_count'
     )
     list_editable = ('is_verified', )
+
+
+@admin.register(ServicePhoto)
+class ServicePhoto(admin.ModelAdmin):
+    list_display = ('service', )

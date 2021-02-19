@@ -1,5 +1,7 @@
 from model_utils.models import TimeStampedModel
 
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
@@ -89,3 +91,11 @@ class Service(TimeStampedModel):
         if not update:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
+
+
+class ServicePhoto(TimeStampedModel):
+    image = models.ImageField(upload_to='services/images/')
+    service = models.ForeignKey(Service,
+        related_name='images',
+        on_delete=models.CASCADE
+    )
