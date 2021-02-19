@@ -61,19 +61,17 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="catagoys_btn">
-                        <ul class="nav nav-pills mb-3 cl_menu" id="pills-tab" role="tablist">
+                        <ul class="nav mb-3 cl_menu">
                             {% for category in featured_categories %}
                                 <li class="nav-item">
-                                    <a class="nav-link text-light {% if forloop.counter == 1 %}active{% endif %}" 
-                                        id="pills-{{ category.pk }}-tab" data-toggle="pill" 
-                                        href="#{{ category.name|slugify }}_data" role="tab" aria-controls="pills-{{ category.pk }}" 
-                                        aria-selected="true">
+                                    <a class="nav-link text-light {% if forloop.counter == 1 %}active{% endif %}"
+                                        href="{{ category.get_absolute_url }}">
                                         <img src="{{ category.category_icon.url }}" alt="">
                                     </a>
                                 </li>
                             {% endfor %}
                             <li>
-                                <a href="{% url 'core:category_list' %}" class="maroff">View More Catagory</a>
+                                <a href="{% url 'services:category_list' %}" class="maroff">View More Category</a>
                             </li>
                         </ul>
                     </div>

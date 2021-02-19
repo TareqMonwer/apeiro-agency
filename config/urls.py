@@ -9,7 +9,7 @@ urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     path("",
-        include("core.urls", namespace='core')
+        include("services.urls", namespace='services')
     ),
     # User management
     path(
@@ -19,7 +19,7 @@ urlpatterns = [
     path('orders/', include('orders.urls', namespace='orders')),
     path("accounts/", include("allauth.urls")),
     path('api-auth/', include('rest_framework.urls')),
-    path('api/core/', include('core.api_routes')),
+    path('api/services/', include('services.api_routes')),
     path('api/orders/', include('orders.api_routes')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

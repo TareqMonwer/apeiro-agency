@@ -204,7 +204,7 @@
         }
 
         function updateCartSidebar(data, categoryId) {
-            const url = `/api/core/category/${categoryId}`;
+            const url = `/api/services/category/${categoryId}`;
             fetch(url, {
                 method: 'GET',
                 }).then(function(response){
